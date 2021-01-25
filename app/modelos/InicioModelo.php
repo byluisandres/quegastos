@@ -37,4 +37,30 @@ class InicioModelo
         $data = $this->db->query($sql);
         return count($data) == 0 ? true : false;
     }
+
+    /**
+     * Función que verifica el usuario en la base de datos para realizar el login
+     */
+    function verificar($email, $password)
+    {
+        $errores = array();
+        if ($email == "" | $password == "") {
+            array_push($errores, "Todos los campos son obligatorios");
+        } else {
+            $passwordEncry = hash("sha512", $password);
+            $sql = "SELECT * FROM usuarios WHERE email='$email' AND password='$passwordEncry'";
+            $data = $this->db->query($sql);
+            if (empty($data)) {
+                array_push($errores, "El usuario y/o la contraseña con incorrectas.");
+            }
+        }
+        return $errores;
+    }
+
+    function getUsuarioCoreo($email)
+    {
+        $sql = "SELECT * FROM usuarios WHERE email='$email'";
+        $data = $this->db->query($sql);
+        return $data;
+    }
 }

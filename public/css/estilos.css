@@ -1,0 +1,95 @@
+/*Estilos generales*/
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+/*variables*/
+:root {
+  /*colores*/
+  --colorPrincipal: #1c2331;
+  /*fuente*/
+}
+.navegacion {
+  background-color: var(--colorPrincipal);
+  min-height: 2rem;
+  padding-left: 0rem;
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+  padding-left: 3rem;
+}
+#content {
+  padding-left: 0rem;
+  margin-top: 4rem;
+  min-height: 100vh;
+}
+footer {
+  background-color: var(--colorPrincipal);
+  margin-top: 0.8rem;
+}
+/*Barra lateral*/
+.sidebar-container {
+  min-height: 100vh;
+  -webkit-transition: 0.5s all ease;
+  transition: 0.5s all ease;
+  z-index: 99;
+  display: none;
+  position: fixed;
+  background-color: var(--colorPrincipal);
+  margin-top: 3rem;
+}
+@media (min-width: 768px) {
+  .sidebar-container {
+    display: block;
+  }
+  #content {
+    padding-left: 15rem;
+  }
+}
+.sidebar-container.active {
+  display: block;
+}
+
+.sidebar-container .menu {
+  width: 15rem;
+  margin-top: 1.8rem;
+}
+
+.sidebar-container .menu .sidebar-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  border-radius: 0.25rem;
+}
+
+.sidebar-container .menu .sidebar-item-list {
+  position: relative;
+  display: block;
+  padding: 0.75rem 1.25rem;
+}
+
+.sidebar-container .menu .sidebar-link {
+  color: white;
+  display: block;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.sidebar-container .menu .sidebar-icon {
+  padding-right: 40px;
+  width: 20px;
+}
+
+.exit-sidebar {
+  position: absolute !important;
+  width: 95%;
+  bottom: 4rem;
+  display: block;
+  padding: 0.75rem 1.25rem;
+  background-color: rgba(239, 83, 80, 0.5);
+  border-radius: 5px;
+}

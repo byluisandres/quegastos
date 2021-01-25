@@ -83,4 +83,46 @@ class Login extends Controlador
             }
         }
     }
+
+    /**
+     * Función para realizar el login
+     *
+     */
+
+    function login()
+    {
+        $errores = array();
+        $mensaje = array();
+        if ($_SERVER['REQUEST_METHOD'] === "POST") {
+            //obtener los datos del formulario
+            $email = htmlentities(isset($_POST['email']) ? $_POST['email'] : "");
+            $password = htmlentities(isset($_POST['password']) ? $_POST['password'] : "");
+            $recordar = isset($_POST['recordar']) ? "on" : "off";
+            $errores = $this->modelo->verificar($email,$password);
+            //Recuerdame
+            $valor = $email . "|" . $password;
+            if ($recordar = "on") {
+                $fecha = time() + (60 * 60 * 607);
+            } else {
+                $fecha = time() - 1;
+            }
+            setcookie("datos", $valor, $fecha, RUTA_APP);
+            
+            if (empty($errores)) {
+                $email = $this->modelo->getUsuarioCoreo($email);
+                $session = new Session();
+                $session->iniciarLogin($email);
+                header("Location:" . RUTA_APP . "/dashboard");
+            } else {
+                $datos = [
+                    "email" => $email,
+                    "password" => $password,
+                    "recordar" => $recordar
+                ];
+                $data = ["errores" => $errores, "datos" => $datos];
+                $this->vista("inicioVista", $data);
+            }
+        }
+        
+    }
 }

@@ -19,6 +19,7 @@ body {
   z-index: 99;
   padding-left: 3rem;
 }
+
 #content {
   padding-left: 0rem;
   margin-top: 4rem;
@@ -30,15 +31,35 @@ footer {
 }
 /*Barra lateral*/
 .sidebar-container {
+  position: fixed;
   min-height: 100vh;
-  -webkit-transition: 0.5s all ease;
+  transition: 0.5s all ease;
   transition: 0.5s all ease;
   z-index: 99;
   display: none;
-  position: fixed;
   background-color: var(--colorPrincipal);
   margin-top: 3rem;
+  width: 15rem;
 }
+.sidebar-container.open {
+  display: block;
+}
+#content.opacidad{
+  opacity: 0.5;
+}
+/* #btnClose {
+  position: absolute;
+  top: 0.5rem;
+  left: 15rem;
+  background-color: var(--colorPrincipal);
+  opacity: 1;
+  padding: 0.5rem;
+  display: block;
+}
+#btnClose span {
+  font-size: 2.3rem;
+  color: white;
+} */
 @media (min-width: 768px) {
   .sidebar-container {
     display: block;
@@ -46,13 +67,12 @@ footer {
   #content {
     padding-left: 15rem;
   }
-}
-.sidebar-container.active {
-  display: block;
+  /* #btnClose {
+    display: none;
+  }  */
 }
 
 .sidebar-container .menu {
-  width: 15rem;
   margin-top: 1.8rem;
 }
 

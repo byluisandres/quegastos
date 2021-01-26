@@ -1,5 +1,6 @@
 <!-- barra lateral -->
-<aside class="sidebar-container">
+
+<aside class="sidebar-container " id="sidebar">
     <article class="menu">
         <div class="text-center" id="info_user">
             <a href="<?php echo RUTA_APP ?>/dashboard" class="sidebar-link">
@@ -17,7 +18,7 @@
             <!-- gastos -->
             <li class="sidebar-item-list accordion md-accordion" role="tab" id="">
                 <a class="sidebar-link" data-toggle="collapse" data-parent="#accordionGastos" href="#gastos" aria-expanded="false" aria-controls="gastos">
-                    <i class="fas fa-hand-holding-usd sidebar-icon collapsed"></i>Gastos <i class="fas fa-angle-down rotate-icon"></i>
+                    <i class="fas fa-hand-holding-usd sidebar-icon collapsed"></i>Gastos <i class="fas fa-angle-down float-right rotate-icon"></i>
                 </a>
                 <!--Accordion gastos-->
                 <div class="accordion md-accordion" id="accordionGastos" role="tablist" aria-multiselectable="true">

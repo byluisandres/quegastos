@@ -4,6 +4,7 @@
     <?php include_once "templates/_partials/nav.php" ?>
     <!-- contenido -->
     <section id="content">
+        
         <div class="container-fluid">
             <div class="row mb-3  d-none d-sm-block">
                 <div class="col-lg-12">
@@ -164,3 +165,5 @@
     </section>
     <?php include_once "templates/_partials/footer.php" ?>
 </main>
+<!-- modal de gastos -->
+<?php include_once "templates/modal-add-gastos.php" ?>

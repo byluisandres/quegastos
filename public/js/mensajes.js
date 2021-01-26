@@ -1,3 +1,9 @@
+/**
+ * Position
+ * top', 'top-start', 'top-end', 'center', 'center-start', 'center-end', 'bottom', 'bottom-start', or 'bottom-end'.
+ * 
+ */
+
 //mensaje tipo toast
 function toastMensaje(posicion, tiempo, tipo, mensaje) {
   const Toast = Swal.mixin({

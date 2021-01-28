@@ -1,3 +1,12 @@
+/*
+Estilos de la página del login
+*/
+.bg {
+  background-image: url("https://www.w3schools.com/css/paris.jpg");
+  background-position: center ;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 /*Estilos generales*/
 body {
   box-sizing: border-box;
@@ -44,7 +53,7 @@ footer {
 .sidebar-container.open {
   display: block;
 }
-#content.opacidad{
+#content.opacidad {
   opacity: 0.5;
 }
 /* #btnClose {

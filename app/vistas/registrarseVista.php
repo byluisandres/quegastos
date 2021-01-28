@@ -1,9 +1,9 @@
 <?php include_once "templates/_partials/header_inicio.php" ?>
 <main class="container">
-    <div class="row" style="margin-top: 5rem;">
+    <div class="row" style="margin-top: 10rem;">
         <div class="col col-md-12">
             <!-- Default form login -->
-            <form class="text-center border border-light p-5" id="formRegistro"  method="POST">
+            <form class="text-center shadow p-2" id="formRegistro"  method="POST">
 
                 <p class="h4 mb-4">Registrarse</p>
 

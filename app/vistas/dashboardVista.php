@@ -4,7 +4,6 @@
     <?php include_once "templates/_partials/nav.php" ?>
     <!-- contenido -->
     <section id="content">
-        
         <div class="container-fluid">
             <div class="row mb-3  d-none d-sm-block">
                 <div class="col-lg-12">
@@ -30,15 +29,16 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <div class="col-md-3 mb-4">
+                <!-- total de gastos -->
+                <div class="col-md-4 mb-4">
                     <!-- Card -->
                     <div class="card gradient-card">
                         <div class="card-image">
                             <!-- Content -->
                             <div class="text-white d-flex h-100 mask blue-gradient-rgba">
                                 <div class="first-content align-self-center p-2">
-                                    <h3 class="card-title"><span>2000</span>&euro;</h3>
-                                    <p class="lead mb-0">Gastos</p>
+                                    <h3 class="card-title"><span id="total-gastos"></span>&euro;</h3>
+                                    <p class="lead mb-0">Total</p>
                                 </div>
                                 <div class="second-content align-self-center mx-auto text-center">
                                     <i class="far fa-money-bill-alt fa-3x"></i>
@@ -47,15 +47,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 mb-4 d-none d-sm-block">
+                <!-- total de categorias -->
+                <div class="col-md-4 mb-4 d-none d-sm-block">
                     <!-- Card -->
                     <div class="card gradient-card">
                         <div class="card-image">
                             <!-- Content -->
                             <div class="text-white d-flex h-100 mask purple-gradient-rgba">
                                 <div class="first-content align-self-center p-2">
-                                    <h3 class="card-title">5</h3>
-                                    <p class="lead mb-0">Categorías</p>
+                                    <h3 class="card-title" ><span id="totalGasto"></span>&euro;</h3>
+                                    <p class="lead mb-0" id="nombreGasto"> </p>
                                 </div>
                                 <div class="second-content  align-self-center mx-auto text-center">
                                     <i class="fas fa-chart-pie fa-3x"></i>
@@ -65,7 +66,8 @@
                     </div>
                     <!--Card -->
                 </div>
-                <div class="col-md-3 mb-4 d-none d-sm-block">
+                <!-- número de eventos -->
+                <div class="col-md-4 mb-4 d-none d-sm-block">
                     <!-- Card -->
                     <div class="card gradient-card">
                         <div class="card-image">
@@ -73,7 +75,7 @@
                             <div class="text-white d-flex h-100 mask peach-gradient-rgba">
                                 <div class="first-content align-self-center p-2">
                                     <h3 class="card-title">2 </h3>
-                                    <p class="lead mb-0">Clientes</p>
+                                    <p class="lead mb-0">Total de eventos</p>
                                 </div>
                                 <div class="second-content  align-self-center mx-auto text-center p-2">
                                     <i class="fas fa-users fa-3x"></i>
@@ -83,27 +85,7 @@
                     </div>
                     <!-- Card -->
                 </div>
-                <div class="col-md-3 mb-4">
-                    <!-- Card -->
-                    <div class="card gradient-card">
-                        <div class="card-image">
-                            <!-- Content -->
-                            <a href="#!">
-                                <div class="text-white d-flex h-100 mask aqua-gradient-rgba">
-                                    <div class="first-content align-self-center p-2">
-                                        <h3 class="card-title">5</h3>
-                                        <p class="lead mb-0">Documentos</p>
-                                    </div>
-                                    <div class="second-content  align-self-center mx-auto text-center">
-                                        <i class="fas fa-folder-open fa-3x"></i>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-                    </div>
-                    <!-- Card -->
-                </div>
+                
             </div>
             <div class="row">
                 <div class="col-lg-8 ">
@@ -115,49 +97,24 @@
                 <div class="col-lg-4">
                     <div class="card p-2">
                         <h3 class="text-center">Gastos Recientes</h3>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Compras de productos para vender
-                                <span class="badge badge-primary badge-pill">30 €</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Dapibus ac facilisis in
-                                <span class="badge badge-primary badge-pill">2</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Morbi leo risus
-                                <span class="badge badge-primary badge-pill">1</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Morbi leo risus
-                                <span class="badge badge-primary badge-pill">1</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Morbi leo risus
-                                <span class="badge badge-primary badge-pill">1</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Morbi leo risus
-                                <span class="badge badge-primary badge-pill">1</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Morbi leo risus
-                                <span class="badge badge-primary badge-pill">1</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Morbi leo risus
-                                <span class="badge badge-primary badge-pill">1</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Morbi leo risus
-                                <span class="badge badge-primary badge-pill">1</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <a href="<?php echo RUTA_APP ?>/gastos">
-                                    Ver todos los Gastos <i class="fas fa-arrow-right"></i>
-                                </a>
-                            </li>
+                        <ul class="list-group list-group-flush" id="list-gastos">
+                            <?php foreach ($data['userGastos'] as $gasto) : ?>
+                                <li class="list-group-item ">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <?php echo $gasto['tipo_gasto']; ?>
+                                        <span class="badge badge-primary badge-pill">
+                                            <?php echo $gasto['cantidad']; ?> &euro;
+                                        </span>
+                                    </div>
+                                    <small class="grey-text"><?php echo $gasto['fecha']; ?></small>
+                                </li>
+                            <?php endforeach; ?>
                         </ul>
+                        <!-- enlace ver todos los gastos -->
+                        <a href="<?php echo RUTA_APP ?>/gastos" class="text-dark ml-3 p-2 border-top">
+                            Ver todos los Gastos <i class="fas fa-arrow-right"></i>
+                        </a>
+
                     </div>
                 </div>
             </div>

@@ -41,4 +41,14 @@ class DashboardModelo
         $resultado = $this->db->queryNoSelect($sql);
         return $resultado;
     }
+    /**
+     * Función para obtener los gastos del usuario
+     */
+    function mdlGetGastosUserDB($idUsuario,$limit=0)
+    {
+        $data = $this->db->query("SELECT gastos_user.id,cantidad,nombre,tipo_gasto,fecha
+        FROM gastos_user JOIN gastos ON gastos_user.id_gasto=gastos.id 
+        WHERE id_user=$idUsuario ORDER BY fecha ASC limit $limit");
+        return $data;
+    }
 }

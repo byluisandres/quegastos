@@ -1,9 +1,13 @@
 <?php include_once "templates/_partials/header_inicio.php" ?>
-<main class="container">
-    <div class="row" style="margin-top: 5rem;">
-        <div class="col col-md-12">
-            <!-- Default form login -->
-            <form class="text-center border border-light p-5" action="<?php echo RUTA_APP ?>/ap/login" method="POST">
+<main class="container rounded shadow">
+
+    <div class="row align-items-stretch" style="margin-top: 5rem;">
+        <div class="col bg d-none d-lg-block col-md-5 col-lg-5 col-xl-6">
+            <!-- imagen -->
+        </div>
+        <div class="col bg-white p-5 ">
+            <!-- login -->
+            <form class="text-center" action="<?php echo RUTA_APP ?>/ap/login" method="POST">
 
                 <p class="h4 mb-4">Inicio de Sesión</p>
 
@@ -37,11 +41,7 @@
                 <?php include_once "templates/_partials/errores.php" ?>
 
             </form>
-            <!-- Default form login -->
         </div>
     </div>
-
 </main>
-
-
 <?php include_once "templates/_partials/footer_inicio.php" ?>

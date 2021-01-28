@@ -18,9 +18,12 @@ class Dashboard extends Controlador
     {
 
         $session = new Session();
+        $usuario = $session->getUsuario();
+        $idUsuario = $usuario['id'];
         if ($session->getLogin()) {
             $gastos = $this->modelo->mdlGetGastos();
-            $data = ["gastos" => $gastos];
+            $userGastos = $this->modelo->mdlGetGastosUserDB($idUsuario, 10);
+            $data = ["gastos" => $gastos, "userGastos" => $userGastos];
             $this->vista("dashboardVista", $data);
         } else {
             header("Location:" . RUTA_APP);
@@ -52,7 +55,7 @@ class Dashboard extends Controlador
         $mensaje = array();
         $session = new Session();
         $usuario = $session->getUsuario();
-        $idUsuario = $usuario[0]['id'];
+        $idUsuario = $usuario['id'];
         if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $cantidad = isset($_POST['cantidad']) ? $_POST['cantidad'] : "";
             $gasto = isset($_POST['gasto']) ? $_POST['gasto'] : "";
@@ -91,5 +94,39 @@ class Dashboard extends Controlador
                 print json_encode($mensaje);
             }
         }
+    }
+
+    /**
+     * Función para obtener los gastos del usuario mes a mes
+     */
+    function ctrlObtenerGastoUser()
+    {
+        $gastos = [];
+        $sumaTotal = 0;
+        $gastosMes = [];
+        $session = new Session();
+        $usuario = $session->getUsuario();
+        $idUsuario = $usuario['id'];
+        $userGastos = $this->modelo->mdlGetGastosUserDB($idUsuario, 100000000000);
+        foreach ($userGastos as  $filas) {
+            $sumaTotal += intval($filas['cantidad']);
+            if (!isset($gastosMes[extraerMesCastellano($filas['fecha'])])) {
+                $gastosMes[extraerMesCastellano($filas['fecha'])] = intval($filas['cantidad']);
+            } else {
+                $gastosMes[extraerMesCastellano($filas['fecha'])] += intval($filas['cantidad']);
+            }
+            if (!isset($gastos[$filas['nombre']])) {
+                $gastos[$filas['nombre']] = intval($filas['cantidad']);
+            } else {
+                $gastos[$filas['nombre']] += intval($filas['cantidad']);
+            }
+        }
+
+        $graficaGastos = [
+            "gastoMes" => $gastosMes,
+            "gastoTotal" => $sumaTotal,
+            "gastos" => $gastos,
+        ];
+        print json_encode($graficaGastos);
     }
 }

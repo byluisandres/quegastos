@@ -16,6 +16,7 @@ $url = explode("/", $url);
 <?php if ($url[2] === "dashboard") : ?>
     <!-- CharstJS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <!-- FullcalendarJS -->
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/locales-all.min.js"></script>
     <!-- InicioJS -->

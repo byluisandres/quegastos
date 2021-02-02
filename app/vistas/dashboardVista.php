@@ -21,8 +21,8 @@
                             </select>
                         </div>
                         <div class="card-body">
+                            <h2 class="text-center" id="textCharts"></h2>
                             <div class="view view-cascade p-3 " id="contenedorBarsCharts">
-                                <canvas id="myChart" height="100"></canvas>
                             </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                             <!-- Content -->
                             <div class="text-white d-flex h-100 mask blue-gradient-rgba">
                                 <div class="first-content align-self-center p-2">
-                                    <h3 class="card-title"><span id="total-gastos"></span>&euro;</h3>
+                                    <h3 class="card-title"><span id="totalGastos"></span>&euro;</h3>
                                     <p class="lead mb-0">Total</p>
                                 </div>
                                 <div class="second-content align-self-center mx-auto text-center">
@@ -55,7 +55,7 @@
                             <!-- Content -->
                             <div class="text-white d-flex h-100 mask purple-gradient-rgba">
                                 <div class="first-content align-self-center p-2">
-                                    <h3 class="card-title" ><span id="totalGasto"></span>&euro;</h3>
+                                    <h3 class="card-title"><span id="totalGastoNombre"></span>&euro;</h3>
                                     <p class="lead mb-0" id="nombreGasto"> </p>
                                 </div>
                                 <div class="second-content  align-self-center mx-auto text-center">
@@ -85,7 +85,7 @@
                     </div>
                     <!-- Card -->
                 </div>
-                
+
             </div>
             <div class="row">
                 <div class="col-lg-8 ">

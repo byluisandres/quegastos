@@ -13,6 +13,7 @@
 $url = $_SERVER["REQUEST_URI"];
 $url = explode("/", $url);
 ?>
+<!-- dashboard -->
 <?php if ($url[2] === "dashboard") : ?>
     <!-- CharstJS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
@@ -23,7 +24,34 @@ $url = explode("/", $url);
     <script src="js/dashboard.js"></script>
     <!-- mensajes -->
     <script src="js/mensajes.js"></script>
-
+<?php endif; ?>
+<!-- gastos -->
+<?php if ($url[2] === "gastos") : ?>
+    <!-- gastosJS -->
+    <script src="js/gastos.js"></script>
+    <!-- mensajes -->
+    <script src="js/mensajes.js"></script>
+<?php endif; ?>
+<!-- gráficos -->
+<?php if ($url[2] === "graficos") : ?>
+    <!-- gastosJS -->
+    <script src="js/graficos.js"></script>
+    <!-- mensajes -->
+    <script src="js/mensajes.js"></script>
+<?php endif; ?>
+<!-- pdf -->
+<?php if ($url[2] === "pdf") : ?>
+    <!-- gastosJS -->
+    <script src="js/pdf.js"></script>
+    <!-- mensajes -->
+    <script src="js/mensajes.js"></script>
+<?php endif; ?>
+<!-- calendario -->
+<?php if ($url[2] === "calendario") : ?>
+    <!-- gastosJS -->
+    <script src="js/calendario.js"></script>
+    <!-- mensajes -->
+    <script src="js/calendario.js"></script>
 <?php endif; ?>
 <!-- Footer -->
 <footer class="page-footer font-small">

@@ -49,10 +49,6 @@ window.onload = () => {
             var hora = fecha.getHours();
             var minutos = fecha.getMinutes();
             var segundos = fecha.getSeconds();
-            console.log(dia, mes, anio);
-            toastMensaje("top-end", 1200, "success", respuesta.mensaje);
-            formAddGasto.reset();
-            tipoGasto.disabled = true;
             tipoGasto.innerHTML = "";
             listGastos.innerHTML += `<li class="list-group-item ">
 <div class="d-flex justify-content-between align-items-center">
@@ -63,6 +59,9 @@ window.onload = () => {
 </div>
 <small class="grey-text">${dia}-${mes}-${anio} ${hora}:${minutos}:${segundos}</small>
 </li>`;
+            toastMensaje("top-end", 1200, "success", respuesta.mensaje);
+            formAddGasto.reset();
+            tipoGasto.disabled = true;
           } else {
             mensaje("center", respuesta.mensaje, "error", 1200);
           }
@@ -78,15 +77,9 @@ window.onload = () => {
   });
 
   /*====================================
-  Pintar la gráfica de barras
-  ======================================*/
-  var ctx = document.getElementById("myChart").getContext("2d");
-
-  var calendarEl = document.getElementById("calendar");
-
-  /*====================================
   Calendario
   ======================================*/
+  var calendarEl = document.getElementById("calendar");
   var calendar = new FullCalendar.Calendar(calendarEl, {
     headerToolbar: {
       left: "prev,next today",
@@ -105,13 +98,21 @@ window.onload = () => {
   calendar.render();
 
   /*====================================
-  Gráfica de barras
+  Pintar la gráfica de barras
   ======================================*/
+  //crear el contenedor para la gráfica
+  var contenedorBarsCharts = document.querySelector("#contenedorBarsCharts");
+  var canvasBarsChart = document.createElement("canvas");
+  canvasBarsChart.setAttribute("id", "barsChart");
+  contenedorBarsCharts.appendChild(canvasBarsChart);
+  var ctx = document.getElementById("barsChart").getContext("2d");
+  //para guardar los valores y nombre
   var labelBars = [],
     valoresBars = [];
-  var totalGastos = document.querySelector("#total-gastos");
+  var total = document.querySelector("#totalGastos");
   var nombreDelGasto = document.querySelector("#nombreGasto");
-  var totalGasto = document.querySelector("#totalGasto");
+  var totalGastoNombre = document.querySelector("#totalGastoNombre");
+  var textCharts = document.querySelector("#textCharts");
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
@@ -121,9 +122,9 @@ window.onload = () => {
       var gastoTotal = respuesta.gastoTotal;
       var nombreGasto = [];
       var mayor = 0;
-      totalGastos.innerHTML = gastoTotal;
-      if (gastoMes === 0) {
-        console.log("Aún no tienes gastos");
+      total.innerHTML = gastoTotal;
+      if (gastoMes.length === 0) {
+        textCharts.innerHTML = "Aún no tienes gastos";
       } else {
         for (const key in gastoMes) {
           labelBars.push(key);
@@ -137,8 +138,13 @@ window.onload = () => {
           nombreGasto.push(key, mayor);
         }
       }
-      totalGasto.innerHTML = nombreGasto[1];
-      nombreDelGasto.innerHTML = nombreGasto[0];
+      if (nombreGasto.length === 0) {
+        totalGastoNombre.innerHTML = "";
+        nombreDelGasto.innerHTML = "";
+      } else {
+        totalGastoNombre.innerHTML = nombreGasto[1];
+        nombreDelGasto.innerHTML = nombreGasto[0];
+      }
     }
   };
   xhttp.open(
@@ -147,6 +153,66 @@ window.onload = () => {
     true
   );
   xhttp.send();
+
+  /*============================================
+  Filtras por año
+  ==============================================*/
+  const selectAnio = document.querySelector("#selectAnio");
+  selectAnio.addEventListener("change", (e) => {
+    var anio = e.target.value;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        var respuesta = JSON.parse(this.responseText);
+        console.log(respuesta);
+        if (respuesta.tipo === "bien") {
+          contenedorBarsCharts.appendChild(canvasBarsChart);
+          var gastoMes = respuesta.dataGastosMes;
+          var gasto = respuesta.gastos;
+          var gastoTotal = respuesta.gastoTotal;
+          var nombreGasto = [];
+          var mayor = 0;
+          total.innerHTML = gastoTotal;
+
+          labelBars.length = 0;
+          valoresBars.length = 0;
+          for (const key in gastoMes) {
+            labelBars.push(key);
+            valoresBars.push(gastoMes[key]);
+          }
+          graficaBar(labelBars, valoresBars);
+
+          for (const key in gasto) {
+            if (gasto[key] > mayor) {
+              mayor = gasto[key];
+              nombreGasto.push(key, mayor);
+            }
+          }
+          if (nombreGasto.length === 0) {
+            totalGastoNombre.innerHTML = "";
+            nombreDelGasto.innerHTML = "";
+          } else {
+            totalGastoNombre.innerHTML = nombreGasto[1];
+            nombreDelGasto.innerHTML = nombreGasto[0];
+          }
+        }
+        if (respuesta.tipo == "error") {
+          textCharts.innerHTML = respuesta.mensaje;
+          totalGastos.innerHTML = 0;
+          totalGastoNombre.innerHTML = 0;
+          nombreDelGasto.innerHTML = "";
+          contenedorBarsCharts.removeChild(canvasBarsChart);
+        }
+      }
+    };
+    xhttp.open(
+      "POST",
+      `http://localhost/quegastos/dashboard/ctrlGetGastosAnio/${anio}`,
+      true
+    );
+    xhttp.send();
+  });
+
   function graficaBar(label, data) {
     new Chart(ctx, {
       type: "bar",
@@ -204,4 +270,3 @@ window.onload = () => {
     });
   }
 };
-/**************************** */

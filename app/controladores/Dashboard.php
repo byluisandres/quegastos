@@ -19,7 +19,7 @@ class Dashboard extends Controlador
 
         $session = new Session();
         $usuario = $session->getUsuario();
-        $idUsuario = $usuario['id'];
+        $idUsuario = $usuario[0]['id'];
         if ($session->getLogin()) {
             $gastos = $this->modelo->mdlGetGastos();
             $userGastos = $this->modelo->mdlGetGastosUserDB($idUsuario, 10);
@@ -55,7 +55,7 @@ class Dashboard extends Controlador
         $mensaje = array();
         $session = new Session();
         $usuario = $session->getUsuario();
-        $idUsuario = $usuario['id'];
+        $idUsuario = $usuario[0]['id'];
         if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $cantidad = isset($_POST['cantidad']) ? $_POST['cantidad'] : "";
             $gasto = isset($_POST['gasto']) ? $_POST['gasto'] : "";
@@ -106,7 +106,7 @@ class Dashboard extends Controlador
         $gastosMes = [];
         $session = new Session();
         $usuario = $session->getUsuario();
-        $idUsuario = $usuario['id'];
+        $idUsuario = $usuario[0]['id'];
         $userGastos = $this->modelo->mdlGetGastosUserDB($idUsuario, 100000000000);
         foreach ($userGastos as  $filas) {
             $sumaTotal += intval($filas['cantidad']);
@@ -128,5 +128,47 @@ class Dashboard extends Controlador
             "gastos" => $gastos,
         ];
         print json_encode($graficaGastos);
+    }
+    /**
+     * Función para obtener los gastos por anio
+     */
+    function ctrlGetGastosAnio($anio)
+    {
+        $gastos = [];
+        $sumaTotal = 0;
+        $mensaje = array();
+        $gastosMes = [];
+        $session = new Session();
+        $usuario = $session->getUsuario();
+        $idUsuario = $usuario[0]['id'];
+        $resultado = $this->modelo->mdlGetGastosAnio($idUsuario,$anio);
+        if ($resultado) {
+            foreach ($resultado as  $filas) {
+                $sumaTotal += $filas['cantidad'];
+                if (!isset($gastosMes[extraerMesCastellano($filas['fecha'])])) {
+                    $gastosMes[extraerMesCastellano($filas['fecha'])] = intval($filas['cantidad']);
+                } else {
+                    $gastosMes[extraerMesCastellano($filas['fecha'])] += intval($filas['cantidad']);
+                }
+                if (!isset($gastos[$filas['nombre']])) {
+                    $gastos[$filas['nombre']] = intval($filas['cantidad']);
+                } else {
+                    $gastos[$filas['nombre']] += intval($filas['cantidad']);
+                }
+            }
+            $dataGastosMes = [
+                "tipo" => "bien",
+                "gastoTotal" => $sumaTotal,
+                "gastos" => $gastos,
+                "dataGastosMes" => $gastosMes,
+            ];
+            print json_encode($dataGastosMes);
+        } else {
+            $mensaje = [
+                "tipo" => "error",
+                "mensaje" => "No hay datos para ese año"
+            ];
+            print json_encode($mensaje);
+        }
     }
 }

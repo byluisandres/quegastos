@@ -39,7 +39,7 @@
                     <a href="<?php echo RUTA_APP; ?>/ap/registro">Registrarse</a>
                 </p>
                 <?php include_once "templates/_partials/errores.php" ?>
-
+                [ luisandres33bolanos@gmail.com - 12345 ]
             </form>
         </div>
     </div>

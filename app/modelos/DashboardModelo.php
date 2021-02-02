@@ -44,11 +44,24 @@ class DashboardModelo
     /**
      * Función para obtener los gastos del usuario
      */
-    function mdlGetGastosUserDB($idUsuario,$limit=0)
+    function mdlGetGastosUserDB($idUsuario, $limit = 0)
     {
+        $anioActual = date("Y");
         $data = $this->db->query("SELECT gastos_user.id,cantidad,nombre,tipo_gasto,fecha
         FROM gastos_user JOIN gastos ON gastos_user.id_gasto=gastos.id 
-        WHERE id_user=$idUsuario ORDER BY fecha ASC limit $limit");
+        WHERE YEAR(fecha) ='$anioActual' AND id_user=$idUsuario ORDER BY fecha limit $limit");
+        return $data;
+    }
+
+    /**
+     * Obtener los gastos por anio
+     */
+    public function mdlGetGastosAnio($idUsuario, $anio)
+    {
+        $data = $this->db->query("SELECT gastos_user.id,cantidad,nombre,fecha,color
+         FROM gastos_user JOIN gastos ON gastos_user.id_gasto=gastos.id WHERE  YEAR(fecha) ='$anio' AND id_user=$idUsuario 
+         order by fecha");
+
         return $data;
     }
 }

@@ -99,14 +99,7 @@ class Login extends Controlador
             $password = htmlentities(isset($_POST['password']) ? $_POST['password'] : "");
             $recordar = isset($_POST['recordar']) ? "on" : "off";
             $errores = $this->modelo->verificar($email,$password);
-            //Recuerdame
-            $valor = $email . "|" . $password;
-            if ($recordar = "on") {
-                $fecha = time() + (60 * 60 * 607);
-            } else {
-                $fecha = time() - 1;
-            }
-            setcookie("datos", $valor, $fecha, RUTA_APP);
+            
             
             if (empty($errores)) {
                 $email = $this->modelo->getUsuarioCoreo($email);

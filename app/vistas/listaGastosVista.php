@@ -46,9 +46,9 @@
                                 <?php foreach ($data['userGastos'] as $gastoUser) : ?>
                                     <tr>
                                         <td hidden><?php echo $gastoUser['id'] ?> </td>
-                                        <td class=""> <?php echo $gastoUser['nombre'] ?></td>
+                                        <td class="" idGasto="<?php echo $gastoUser['idGasto'] ?>"> <?php echo $gastoUser['nombre'] ?></td>
                                         <td><?php echo $gastoUser['tipo_gasto'] ?></td>
-                                        <td><?php echo $gastoUser['cantidad'] ?>&euro;</td>
+                                        <td><?php echo $gastoUser['cantidad'] ?> <span>&euro;</span> </td>
                                         <td class=""><?php echo ($gastoUser['fecha']) ?> </td>
                                         <td>
                                             <div class="btn-group dropright">
@@ -57,11 +57,11 @@
                                                     <span class="sr-only">Toggle Dropdown</span>
                                                 </button>
                                                 <div class="dropdown-menu">
-                                                    <span class="dropdown-item">
-                                                        <i class="fas fa-pencil-alt mr-2" id="btnEditar"></i>Editar
+                                                    <span class="dropdown-item" data-toggle="modal" data-target="#editarGastos" id="btnEditar" idUsuario="<?php echo $gastoUser['id'] ?>">
+                                                        <i class="fas fa-pencil-alt mr-2"></i>Editar
                                                     </span>
                                                     <span class="dropdown-item" id="btnBorrar">
-                                                        <i class="fas fa-trash-alt mr-2" ></i>Borrar
+                                                        <i class="fas fa-trash-alt mr-2"></i>Borrar
                                                     </span>
                                                 </div>
                                             </div>
@@ -81,5 +81,7 @@
     </section>
     <?php include_once "templates/_partials/footer.php" ?>
 </main>
-<!-- modal de gastos -->
+<!-- modal para añadir gastos -->
 <?php include_once "templates/modal-add-gastos.php" ?>
+<!-- modal para editar gasto -->
+<?php include_once "templates/gastos/modal-edit-gasto.php" ?>

@@ -34,16 +34,16 @@ window.onload = () => {
   var tableGastos = document.querySelector("#tableGastos");
   formAddGasto.addEventListener("submit", (e) => {
     e.preventDefault();
-    let formDataGastosGastos = new FormData(formAddGasto);
-    if (isNaN(formDataGastosGastos.get("cantidad"))) {
+    let formDataGastos = new FormData(formAddGasto);
+    if (isNaN(formDataGastos.get("cantidad"))) {
       mensaje("center", "La cantidad tiene que ser un número", "warning", 1200);
     } else {
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           var respuesta = JSON.parse(this.responseText);
-          console.log(respuesta);
-          switch (formDataGastosGastos.get("gasto")) {
+
+          switch (formDataGastos.get("gasto")) {
             case "1":
               gasto = "gasto de compras";
               break;
@@ -89,8 +89,8 @@ window.onload = () => {
             <tr>
               <td hidden></td>
               <td>${gasto}</td>
-              <td>${formDataGastosGastos.get("tipoGasto")}</td>
-              <td>${formDataGastosGastos.get("cantidad")} &euro;</td>
+              <td>${formDataGastos.get("tipoGasto")}</td>
+              <td>${formDataGastos.get("cantidad")} &euro;</td>
               <td>${dia}-${mes}-${anio} ${hora}:${minutos}:${segundos}</td>
               <td>
               <div class="btn-group dropright">
@@ -122,7 +122,7 @@ window.onload = () => {
         "http://localhost/quegastos/gastos/ctrlDatosFormGasto",
         true
       );
-      xhttp.send(formDataGastosGastos);
+      xhttp.send(formDataGastos);
     }
   });
 
@@ -140,8 +140,8 @@ window.onload = () => {
         text: "Esta acción no podra deshacerse",
         icon: "info",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
+        confirmButtonColor: "#004d40",
+        cancelButtonColor: "#b71c1c",
         confirmButtonText: "Si, quiere borrarlo",
         cancelButtonText: "Cancelar",
       }).then((result) => {
@@ -160,7 +160,7 @@ window.onload = () => {
                 }, 1000);
                 tr.remove();
               } else {
-                mensaje("center", "No se ha podido borrar", "error", 1200) 
+                mensaje("center", "No se ha podido borrar", "error", 1200);
               }
             }
           };
@@ -173,5 +173,69 @@ window.onload = () => {
         }
       });
     });
+  });
+
+  /*=====================================================
+    Modificar Gasto
+  =======================================================*/
+  var editarGastos = document.querySelector(".editarGastos");
+  const btnEditar = document.querySelectorAll("#btnEditar");
+  const selectGastoEdit = document.querySelector("#gastoEdit");
+  const tipoGastoEdit = document.querySelector("#tipoGastoEdit");
+  const formEditGasto = document.querySelector("#formEditGasto");
+  btnEditar.forEach((element) => {
+    element.addEventListener("click", (e) => {
+      let tr = e.target.parentElement.parentElement.parentElement.parentElement;
+      editarGastos.querySelector("#cantidad").value =
+        tr.cells[3].firstChild.textContent;
+      editarGastos.querySelector("#gastoEdit").value =
+        tr.cells[1].attributes["idgasto"].textContent;
+      editarGastos.querySelector(
+        "#tipoGastoEdit"
+      ).innerHTML = `<option>${tr.cells[2].textContent}</option>`;
+      idGasto = tr.cells[0].textContent;
+      formEditGasto.addEventListener("submit", (e) => {
+        e.preventDefault();
+        let formDataEditar = new FormData(formEditGasto);
+        formDataEditar.append("idGasto", idGasto);
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            if (respuesta.tipo) {
+              toastMensaje("top-end", 1200, "success", respuesta.mensaje);
+            } else {
+              mensaje("center", respuesta.mensaje, "error", 1200);
+            }
+            console.log(respuesta);
+          }
+        };
+        xhttp.open(
+          "POST",
+          "http://localhost/quegastos/gastos/ctrlEditarGasto",
+          true
+        );
+        xhttp.send(formDataEditar);
+      });
+    });
+  });
+  selectGastoEdit.addEventListener("change", (e) => {
+    var valorSelectGasto = e.target.value;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        respuesta = JSON.parse(this.responseText);
+        tipoGastoEdit.innerHTML = "";
+        respuesta.forEach((element) => {
+          tipoGastoEdit.innerHTML += `<option value='${element[1]}'>${element[1]}</option>`;
+        });
+      }
+    };
+    xhttp.open(
+      "POST",
+      `http://localhost/quegastos/gastos/ctrlGetTipoGasto/${valorSelectGasto}`,
+      true
+    );
+    xhttp.send();
   });
 };

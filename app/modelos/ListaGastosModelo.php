@@ -18,7 +18,7 @@ class ListaGastosModelo
     function mdlGetUserGastosDB($idUsuario, $limit = 0)
     {
         $anioActual = date("Y");
-        $data = $this->db->query("SELECT gastos_user.id,cantidad,nombre,tipo_gasto,fecha
+        $data = $this->db->query("SELECT gastos_user.id,gastos.id as idGasto,cantidad,nombre,tipo_gasto,fecha
         FROM gastos_user JOIN gastos ON gastos_user.id_gasto=gastos.id 
         WHERE YEAR(fecha) ='$anioActual' AND id_user=$idUsuario ORDER BY fecha limit $limit");
         return $data;
@@ -51,6 +51,21 @@ class ListaGastosModelo
     function mdlBorrarGasto($id)
     {
         $sql = "DELETE FROM gastos_user WHERE id=$id";
+        $resultado = $this->db->queryNoSelect($sql);
+        return $resultado;
+    }
+
+    //Función para modificar el gasto
+    function mdlEditarGastoUserDB($data)
+    {
+        $idGastoUser = $data["idGastoUser"];
+        $cantidad = $data['cantidad'];
+        $idGasto = $data['idGasto'];
+        $tipoGasto = $data['tipoGasto'];
+        $fecha = $data['fecha'];
+        $resultado = false;
+        $sql = "UPDATE gastos_user 
+        SET cantidad=$cantidad,fecha='$fecha', id_gasto=$idGasto,tipo_gasto='$tipoGasto' WHERE id=$idGastoUser";
         $resultado = $this->db->queryNoSelect($sql);
         return $resultado;
     }

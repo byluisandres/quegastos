@@ -104,4 +104,36 @@ class Gastos extends Controlador
             print json_encode($mensaje);
         }
     }
+
+    //Función para editar
+    function ctrlEditarGasto()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === "POST") {
+            $mensaje = array();
+            $fecha = date("Y-m-d H:i:s");
+            $data = [
+                "idGastoUser" => $_POST['idGasto'],
+                "cantidad" => $_POST['cantidad'],
+                "idGasto" => $_POST['gasto'],
+                "tipoGasto" => $_POST['tipoGasto'],
+                "fecha" => $fecha
+            ];
+
+            $resultado = $this->modelo->mdlEditarGastoUserDB($data);
+            if($resultado){
+                $mensaje = [
+                    "tipo" => "correcto",
+                    "mensaje" => "Se ha actualizado con exito"
+                ];
+                print json_encode($mensaje);
+            }else{
+                $mensaje = [
+                    "tipo" => "error",
+                    "mensaje" => "Error al actualizar, intentalo mas tarde"
+                ];
+                print json_encode($mensaje);
+            }
+            
+        }
+    }
 }

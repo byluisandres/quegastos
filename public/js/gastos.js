@@ -1,7 +1,7 @@
 window.onload = () => {
-  $("#addGastos").on("hidden.bs.modal", function () {
-    window.location.reload();
-  });
+  // $("#addGastos").on("hidden.bs.modal", function () {
+  //   window.location.reload();
+  // });
   /** =================================
      tipo de gasto segun el gasto
      ==================================== */
@@ -32,6 +32,12 @@ window.onload = () => {
   /**enviar datos del formulario con el gasto, añadir gasto */
   var formAddGasto = document.querySelector("#formAddGasto");
   var tableGastos = document.querySelector("#tableGastos");
+  var dataTable = new DataTable(tableGastos, {
+    searchable: true,
+    fixedHeight: true,
+    perPage: 10,
+  });
+  
   formAddGasto.addEventListener("submit", (e) => {
     e.preventDefault();
     let formDataGastos = new FormData(formAddGasto);

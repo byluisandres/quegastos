@@ -31,6 +31,8 @@ $url = explode("/", $url);
     <script src="js/gastos.js"></script>
     <!-- mensajes -->
     <script src="js/mensajes.js"></script>
+    <!-- datatablesJS -->
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-datatables@latest/dist/vanilla-dataTables.min.js"></script>
 <?php endif; ?>
 <!-- gráficos -->
 <?php if ($url[2] === "graficos") : ?>

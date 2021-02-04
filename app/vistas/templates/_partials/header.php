@@ -27,7 +27,9 @@ $url = explode("/", $url);
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.css" />
     <?php endif; ?>
 
-    <?php if ($url[2] === "clientes") : ?>
+    <?php if ($url[2] === "gastos") : ?>
+        <!-- datatableJS -->
+        <link href="https://cdn.jsdelivr.net/npm/vanilla-datatables@latest/dist/vanilla-dataTables.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/estilos.css">
     <?php else : ?>
         <!-- estilos -->

@@ -143,3 +143,11 @@ footer {
 
   appearance: none;
 }
+
+/*Estilos para informes*/
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1c2331;
+}
+

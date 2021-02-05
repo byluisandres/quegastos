@@ -14,13 +14,9 @@
                     </button>
                 </div>
                 <div class="col-lg-3 d-none d-sm-block">
-                    <button class="btn btn-outline-red btn-block dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="far fa-file-pdf"></i>
-                        Filtrar</button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" data-toggle="modal" data-target="#entreFechas">Gastos</a>
-                        <a class="dropdown-item" data-toggle="modal" data-target="#todosGastos">Entre Fechas</a>
-                        <a class="dropdown-item" data-toggle="modal" data-target="#anio">Por año</a>
-                    </div>
+                    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#basicExampleModal">
+                        Gráficas
+                    </button>
                 </div>
             </div>
             <!-- table -->
@@ -44,7 +40,7 @@
                                     <td><?php echo $gastoUser['tipo_gasto'] ?></td>
                                     <td><?php echo $gastoUser['cantidad'] ?> <span>&euro;</span> </td>
                                     <td class=""><?php echo ($gastoUser['fecha']) ?> </td>
-                                    <td class="" >
+                                    <td class="">
                                         <div class="btn-group dropright">
                                             <button type="button" class="btn btn-mdb-color">Acciones</button>
                                             <button type="button" class="btn btn-mdb-color  dropdown-toggle px-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -74,3 +70,5 @@
 <?php include_once "templates/modal-add-gastos.php" ?>
 <!-- modal para editar gasto -->
 <?php include_once "templates/gastos/modal-edit-gasto.php" ?>
+<!-- modal graficos-->
+<?php include_once "templates/gastos/modal-graficos.php" ?>

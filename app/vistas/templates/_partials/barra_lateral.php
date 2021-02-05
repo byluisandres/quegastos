@@ -28,10 +28,7 @@
                                 <a href="<?php echo RUTA_APP ?>/gastos" class="sidebar-link">Lista de Gastos</a>
                             </li>
                             <li>
-                                <a href="<?php echo RUTA_APP ?>/graficas" class="sidebar-link ">Gráficos</a>
-                            </li>
-                            <li>
-                                <a href="<?php echo RUTA_APP ?>/graficas" class="sidebar-link ">Exportar pdf</a>
+                                <a href="<?php echo RUTA_APP ?>/informes" class="sidebar-link ">Informes</a>
                             </li>
                         </ul>
                     </div>

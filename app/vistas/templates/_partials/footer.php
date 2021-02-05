@@ -42,15 +42,16 @@ $url = explode("/", $url);
     <script src="js/mensajes.js"></script>
 <?php endif; ?>
 <!-- pdf -->
-<?php if ($url[2] === "pdf") : ?>
-    <!-- gastosJS -->
-    <script src="js/pdf.js"></script>
+<?php if ($url[2] === "informes") : ?>
+    <!-- InformesJS -->
+    <script src="js/informes.js"></script>
+    <script src="js/eventos_informes.js"></script>
     <!-- mensajes -->
     <script src="js/mensajes.js"></script>
 <?php endif; ?>
 <!-- calendario -->
 <?php if ($url[2] === "calendario") : ?>
-    <!-- gastosJS -->
+    <!-- CalendarioJS -->
     <script src="js/calendario.js"></script>
     <!-- mensajes -->
     <script src="js/calendario.js"></script>

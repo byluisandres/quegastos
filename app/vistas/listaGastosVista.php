@@ -7,20 +7,28 @@
 
         <div class="container-fluid">
             <h3>Lista de gastos</h3>
-            <div class="row d-flex justify-content-between mb-3">
-                <div class="col-lg-3 d-none d-sm-block">
+            <div class="row  p-2 mb-3 d-flex justify-content-between">
+                <div class="col-lg-3  d-none d-sm-block">
                     <button type="button" class="btn btn-teal btn-block" data-toggle="modal" data-target="#addGastos">
                         <i class="fas fa-plus"></i> Añadir gasto
                     </button>
                 </div>
-                <div class="col-lg-3 d-none d-sm-block">
+                <div class="col-lg-3  d-none d-sm-block">
+                    <select name="gastoFiltrar" id="gastoFiltrar" class="browser-default custom-select">
+                        <option value="">Seleciona gasto para filtrar</option>
+                    </select>
+                </div>
+                <div class="col-lg-3  d-none d-sm-block">
+                    <input type="date" name="fecha" id="fecha" class="form-control">
+                </div>
+                <div class="col-lg-3  d-none d-sm-block">
                     <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#basicExampleModal">
                         Gráficas
                     </button>
                 </div>
             </div>
             <!-- table -->
-            <div class="row">
+            <div class="row p-1">
                 <div class="col col-lg-12 ">
                     <table class="table table-striped tableApp" id="tableGastos">
                         <thead class="mdb-color darken-4 white-text">
@@ -40,7 +48,7 @@
                                     <td><?php echo $gastoUser['tipo_gasto'] ?></td>
                                     <td><?php echo $gastoUser['cantidad'] ?> <span>&euro;</span> </td>
                                     <td class=""><?php echo ($gastoUser['fecha']) ?> </td>
-                                    <td class="">
+                                    <td class="d-none d-sm-block">
                                         <div class="btn-group dropright">
                                             <button type="button" class="btn btn-mdb-color">Acciones</button>
                                             <button type="button" class="btn btn-mdb-color  dropdown-toggle px-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <h3>Informes</h3>
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-2">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="csv-tab" data-toggle="tab" href="#csv" role="tab" aria-controls="csv" aria-selected="true">CSV</a>
@@ -43,17 +43,18 @@
                     </div>
 
                 </div>
-                <div class="col-lg-4 ">
+                <div class="col-lg-3 ">
                     <div class="card p-2">
-                        <p class="text-center"> Elige si quieres generar informes en CSV o en PDF. </p>
+                        <p class="text-center" id="textElige"> Elige si quieres generar informes en CSV o en PDF. </p>
                         <?php include_once "templates/_partials/form_informes.php" ?>
                     </div>
                 </div>
-                <div class="col-lg-5 ">
-                    <div class="card ">
-                        <h4>Vista Previa</h4>
-                        <embed type="" src="" width="300" height="200">
+                <div class="col-lg-7 ">
+                    <div class="card p-2 card-informe">
+                        <h4 id="textoVistaPrevia">Vista Previa</h4>
+                        <div id="contenedor-informe"></div>
                     </div>
+
                 </div>
             </div>
     </section>

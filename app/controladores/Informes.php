@@ -14,8 +14,10 @@ class Informes extends Controlador
         $session = new Session();
         $usuario = $session->getUsuario();
         $idUsuario = $usuario[0]['id'];
+        $gastos = $this->modelo->mdlGetGastos();
         if ($session->getLogin()) {
-            $this->vista("informesVista", $data = []);
+            $data = ["gastos" => $gastos];
+            $this->vista("informesVista", $data);
         } else {
             header("Location:" . RUTA_APP);
         }

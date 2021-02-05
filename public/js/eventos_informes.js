@@ -1,4 +1,5 @@
 window.onload = () => {
+  var textElige = document.querySelector("#textElige");
   /**CSV */
   var csvEntreFechas = document.querySelector("#csv-entre-fechas-tab");
   var csvGasto = document.querySelector("#csv-gasto-tab");
@@ -25,6 +26,7 @@ window.onload = () => {
   contenedorPdfAnio.style.display = "none";
   /**Eventos csv */
   csvEntreFechas.addEventListener("click", () => {
+    textElige.innerHTML = "GENERAR CSV ENTRE DOS FECHAS";
     if (contenedorCsvGasto.style.display === "block") {
       contenedorCsvGasto.style.display = "none";
     }
@@ -50,6 +52,7 @@ window.onload = () => {
   });
 
   csvGasto.addEventListener("click", () => {
+    textElige.innerHTML = "GENERAR CSV POR GASTO";
     if (contenedorCsvEntreFechas.style.display === "block") {
       contenedorCsvEntreFechas.style.display = "none";
     }
@@ -76,6 +79,7 @@ window.onload = () => {
   });
 
   csvAnio.addEventListener("click", () => {
+    textElige.innerHTML = "GENERAR CSV DE UN AÑO";
     if (contenedorCsvGasto.style.display === "block") {
       contenedorCsvGasto.style.display = "none";
     }
@@ -88,6 +92,10 @@ window.onload = () => {
     if (contenedorPdfEntreFechas.style.display === "block") {
       contenedorPdfEntreFechas.style.display = "none";
     }
+    if (contenedorCsvEntreFechas.style.display === "block") {
+      contenedorCsvEntreFechas.style.display === "none";
+    }
+    console.log(contenedorCsvEntreFechas);
     if (contenedorCsvAnio.style.display === "none") {
       contenedorCsvAnio.style.display = "block";
       contenedorCsvAnio.classList.add("animate__fadeInDown");
@@ -99,6 +107,7 @@ window.onload = () => {
 
   /**Eventos pdf */
   pdfEntreFechas.addEventListener("click", () => {
+    textElige.innerHTML = "GENERAR PDF ENTRE DOS FECHAS";
     if (contenedorPdfGasto.style.display === "block") {
       contenedorPdfGasto.style.display = "none";
     }
@@ -124,6 +133,7 @@ window.onload = () => {
   });
 
   pdfGasto.addEventListener("click", () => {
+    textElige.innerHTML = "GENERAR PDF POR GASTO";
     if (contenedorPdfEntreFechas.style.display === "block") {
       contenedorPdfEntreFechas.style.display = "none";
     }
@@ -149,6 +159,7 @@ window.onload = () => {
   });
 
   pdfAnio.addEventListener("click", () => {
+    textElige.innerHTML = "GENERAR PDF DE UN AÑO";
     if (contenedorPdfGasto.style.display === "block") {
       contenedorPdfGasto.style.display = "none";
     }
@@ -161,6 +172,7 @@ window.onload = () => {
     if (contenedorCsvEntreFechas.style.display === "block") {
       contenedorCsvEntreFechas.style.display = "none";
     }
+
     if (contenedorPdfAnio.style.display === "none") {
       contenedorPdfAnio.style.display = "block";
       contenedorPdfAnio.classList.add("animate__fadeInDown");

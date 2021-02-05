@@ -37,7 +37,7 @@ window.onload = () => {
     fixedHeight: true,
     perPage: 10,
   });
-  
+
   formAddGasto.addEventListener("submit", (e) => {
     e.preventDefault();
     let formDataGastos = new FormData(formAddGasto);

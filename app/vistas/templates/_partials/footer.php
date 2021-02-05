@@ -34,20 +34,15 @@ $url = explode("/", $url);
     <!-- datatablesJS -->
     <script src="https://cdn.jsdelivr.net/npm/vanilla-datatables@latest/dist/vanilla-dataTables.min.js"></script>
 <?php endif; ?>
-<!-- gráficos -->
-<?php if ($url[2] === "graficos") : ?>
-    <!-- gastosJS -->
-    <script src="js/graficos.js"></script>
-    <!-- mensajes -->
-    <script src="js/mensajes.js"></script>
-<?php endif; ?>
-<!-- pdf -->
+<!-- informes -->
 <?php if ($url[2] === "informes") : ?>
     <!-- InformesJS -->
     <script src="js/informes.js"></script>
     <script src="js/eventos_informes.js"></script>
     <!-- mensajes -->
     <script src="js/mensajes.js"></script>
+    <!--pdfobject  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.4/pdfobject.min.js"></script>
 <?php endif; ?>
 <!-- calendario -->
 <?php if ($url[2] === "calendario") : ?>

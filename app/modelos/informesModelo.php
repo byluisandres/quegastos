@@ -13,6 +13,12 @@ class InformesModelo
     }
 
     /**Funcion para interacturar con la base de datos*/
-
-
+    /**
+     * Función para obtener los gastos
+     */
+    public function mdlGetGastos()
+    {
+        $data = $this->db->query("SELECT * FROM gastos");
+        return $data;
+    }
 }

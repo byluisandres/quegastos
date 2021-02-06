@@ -13,16 +13,20 @@
                         <i class="fas fa-plus"></i> Añadir gasto
                     </button>
                 </div>
-                <div class="col-lg-3  d-none d-sm-block">
+                <!-- <div class="col-lg-3  d-none d-sm-block">
                     <select name="gastoFiltrar" id="gastoFiltrar" class="browser-default custom-select">
-                        <option value="">Seleciona gasto para filtrar</option>
+                        <option value="null" disabled selected>Seleciona gasto para filtrar</option>
+
+                        <?php foreach ($data['gastos'] as $gasto) : ?>
+                            <option value="<?php echo $gasto['id'] ?>"><?php echo strtoupper($gasto['nombre']) ?> </option>
+                        <?php endforeach; ?>
                     </select>
-                </div>
+                </div> -->
+                <!-- <div class="col-lg-3  d-none d-sm-block">
+                    <input type="date" name="fechaFiltrar" id="fechaFiltrar" class="form-control">
+                </div> -->
                 <div class="col-lg-3  d-none d-sm-block">
-                    <input type="date" name="fecha" id="fecha" class="form-control">
-                </div>
-                <div class="col-lg-3  d-none d-sm-block">
-                    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#basicExampleModal">
+                    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalGraficas">
                         Gráficas
                     </button>
                 </div>
@@ -42,7 +46,7 @@
                         </thead>
                         <tbody>
                             <?php foreach ($data['userGastos'] as $gastoUser) : ?>
-                                <tr>
+                                <tr idGastoFiltar="<?php echo $gastoUser['idGasto'] ?>">
                                     <td hidden><?php echo $gastoUser['id'] ?> </td>
                                     <td class="" idGasto="<?php echo $gastoUser['idGasto'] ?>"> <?php echo $gastoUser['nombre'] ?></td>
                                     <td><?php echo $gastoUser['tipo_gasto'] ?></td>

@@ -28,6 +28,7 @@ class Gastos extends Controlador
     /**
      * Funciones del controlador
      */
+
     //Función para obtener el tipo de gasto, según el gasto
     public function ctrlGetTipoGasto($id)
     {
@@ -120,20 +121,49 @@ class Gastos extends Controlador
             ];
 
             $resultado = $this->modelo->mdlEditarGastoUserDB($data);
-            if($resultado){
+            if ($resultado) {
                 $mensaje = [
                     "tipo" => "correcto",
                     "mensaje" => "Se ha actualizado con exito"
                 ];
                 print json_encode($mensaje);
-            }else{
+            } else {
                 $mensaje = [
                     "tipo" => "error",
                     "mensaje" => "Error al actualizar, intentalo mas tarde"
                 ];
                 print json_encode($mensaje);
             }
-            
         }
+    }
+
+    //obtener los gastos mes a mes y los gastos para pintar en la gráfica
+    function ctrlObtenerGastoUserBD()
+    {
+        $gastos = [];
+        $gastosMes = [];
+        $session = new Session();
+        $usuario = $session->getUsuario();
+        $idUsuario = $usuario[0]['id'];
+        $userGastos = $this->modelo->mdlGetUserGastosDB($idUsuario, 1000000000);
+        foreach ($userGastos as  $filas) {
+            if (!isset($gastos[$filas['nombre']])) {
+                $gastos[$filas['nombre']] = intval($filas['cantidad']);
+            } else {
+                $gastos[$filas['nombre']] += intval($filas['cantidad']);
+            }
+
+            if (!isset($gastosMes[extraerMesCastellano($filas['fecha'])])) {
+                $gastosMes[extraerMesCastellano($filas['fecha'])] = intval($filas['cantidad']);
+            } else {
+                $gastosMes[extraerMesCastellano($filas['fecha'])] += intval($filas['cantidad']);
+            }
+        }
+
+        $graficaGastos = [
+            "gastos" => $gastos,
+            "gastoMes" => $gastosMes
+        ];
+        print json_encode($graficaGastos);
     }
 }

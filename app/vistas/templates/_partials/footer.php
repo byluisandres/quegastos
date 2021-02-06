@@ -27,12 +27,14 @@ $url = explode("/", $url);
 <?php endif; ?>
 <!-- gastos -->
 <?php if ($url[2] === "gastos") : ?>
+    <!-- CharstJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <!-- datatablesJS -->
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-datatables@latest/dist/vanilla-dataTables.min.js"></script>
     <!-- gastosJS -->
     <script src="js/gastos.js"></script>
     <!-- mensajes -->
     <script src="js/mensajes.js"></script>
-    <!-- datatablesJS -->
-    <script src="https://cdn.jsdelivr.net/npm/vanilla-datatables@latest/dist/vanilla-dataTables.min.js"></script>
 <?php endif; ?>
 <!-- informes -->
 <?php if ($url[2] === "informes") : ?>

@@ -69,4 +69,6 @@ class ListaGastosModelo
         $resultado = $this->db->queryNoSelect($sql);
         return $resultado;
     }
+
+   
 }

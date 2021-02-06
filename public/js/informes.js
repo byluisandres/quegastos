@@ -1,27 +1,11 @@
 var textoVistaPrevia = document.querySelector("#textoVistaPrevia");
-/**CSV */
-var formCsvEntreFechas = document.querySelector("#formCsvEntreFechas");
-var formCsvGasto = document.querySelector("#formCsvGasto");
-var formCsvAnio = document.querySelector("#formCsvAnio");
 
 /**PDF */
 var formPdfEntreFechas = document.querySelector("#formPdfEntreFechas");
 var selectPdfGasto = document.querySelector("#selectPdfGasto");
 var selectPdfAnio = document.querySelector("#selectPdfAnio");
 
-//Obtener datos para generar csv
-formCsvEntreFechas.addEventListener("submit", (e) => {
-  e.preventDefault();
-  console.log("submit formCsvEntreFechas");
-});
-formCsvGasto.addEventListener("submit", (e) => {
-  e.preventDefault();
-  console.log("submit formCsvGasto");
-});
-formCsvAnio.addEventListener("submit", (e) => {
-  e.preventDefault();
-  console.log("submit formCsvAnio");
-});
+
 
 //Obtener datos para generar pdf
 formPdfEntreFechas.addEventListener("submit", (e) => {

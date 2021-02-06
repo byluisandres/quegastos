@@ -1,31 +1,4 @@
-<!-- CSv -->
-<div id="contenedorCsvEntreFechas" class="animate__animated">
-    <form action="" id="formCsvEntreFechas" method="POST">
-        <input type="date" name="" id="" class="form-control mb-3">
-        <input type="date" name="" id="" class="form-control mb-3">
-        <input type="submit" value="Generar csv" class="btn btn-teal btn-block">
-    </form>
-</div>
 
-<div id="contenedorCsvGasto" class="animate__animated">
-    <form action="" id="formCsvGasto" method="POST">
-        <select name="gasto" id="gasto" class="form-control mb-3">
-            <option value="null" disabled selected>-- Selecciona Gasto --</option>
-            <?php foreach ($data['gastos'] as $gasto) : ?>
-                <option value="<?php echo $gasto['id'] ?>"><?php echo $gasto['nombre'] ?> </option>
-            <?php endforeach; ?>
-        </select>
-
-    </form>
-</div>
-<div id="contenedorCsvAnio" class="animate__animated">
-    <form action="" id="formCsvAnio" method="POST">
-        <select name="anio" id="anio" class="form-control mb-3">
-            <option>Anio csv</option>
-        </select>
-
-    </form>
-</div>
 
 <!-- PDF -->
 <div id="contenedorPdfEntreFechas" class="animate__animated">
@@ -39,14 +12,14 @@
 </div>
 
 <div id="contenedorPdfGasto" class="animate__animated">
-    
-        <select name="selectPdfGasto" id="selectPdfGasto" class="form-control mb-3">
-            <option value="null" disabled selected>-- Selecciona Gasto --</option>
-            <?php foreach ($data['gastos'] as $gasto) : ?>
-                <option value="<?php echo $gasto['id'] ?>"><?php echo $gasto['nombre'] ?> </option>
-            <?php endforeach; ?>
-        </select>
-    
+
+    <select name="selectPdfGasto" id="selectPdfGasto" class="form-control mb-3">
+        <option value="null" disabled selected>-- Selecciona Gasto --</option>
+        <?php foreach ($data['gastos'] as $gasto) : ?>
+            <option value="<?php echo $gasto['id'] ?>"><?php echo $gasto['nombre'] ?> </option>
+        <?php endforeach; ?>
+    </select>
+
 </div>
 <div id="contenedorPdfAnio" class="animate__animated">
 

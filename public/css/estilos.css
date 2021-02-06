@@ -151,6 +151,11 @@ footer {
 }
 
 .pdfobject-container {
-  height:50rem;
-  border: 1rem solid rgba(0, 0, 0, 0.1);
+  height: 60rem;
+  border: 0.8rem solid rgba(0, 0, 0, 0.1);
+}
+/*Gastos*/
+#modalGraficas .modal-dialog {
+  max-width: 800px;
+  margin: 1.75rem auto;
 }

@@ -20,7 +20,7 @@ class ListaGastosModelo
         $anioActual = date("Y");
         $data = $this->db->query("SELECT gastos_user.id,gastos.id as idGasto,cantidad,nombre,tipo_gasto,fecha
         FROM gastos_user JOIN gastos ON gastos_user.id_gasto=gastos.id 
-        WHERE YEAR(fecha) ='$anioActual' AND id_user=$idUsuario ORDER BY fecha limit $limit");
+        WHERE YEAR(fecha) ='$anioActual' AND id_user=$idUsuario ORDER BY fecha DESC limit $limit");
         return $data;
     }
 

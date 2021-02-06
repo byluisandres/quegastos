@@ -48,9 +48,12 @@ $url = explode("/", $url);
 <?php endif; ?>
 <!-- calendario -->
 <?php if ($url[2] === "calendario") : ?>
-    <!-- CalendarioJS -->
-    <script src="js/calendario.js"></script>
+    <!-- fullcalendar -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/locales-all.min.js"></script>
     <!-- mensajes -->
+    <script src="js/mensajes.js"></script>
+    <!-- Calendario -->
     <script src="js/calendario.js"></script>
 <?php endif; ?>
 <!-- Footer -->

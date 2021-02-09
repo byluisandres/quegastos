@@ -27,8 +27,8 @@ class Session
     {
         unset($_SESSION['usuario']);
         unset($this->usuario);
+        session_destroy();
         $this->login = false;
-        header("Location: http://localhost/quegastos/");
     }
 
     function getLogin()

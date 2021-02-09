@@ -46,7 +46,7 @@
                         </thead>
                         <tbody>
                             <?php foreach ($data['userGastos'] as $gastoUser) : ?>
-                                <tr idGastoFiltar="<?php echo $gastoUser['idGasto'] ?>">
+                                <tr>
                                     <td hidden><?php echo $gastoUser['id'] ?> </td>
                                     <td class="" idGasto="<?php echo $gastoUser['idGasto'] ?>"> <?php echo $gastoUser['nombre'] ?></td>
                                     <td><?php echo $gastoUser['tipo_gasto'] ?></td>

@@ -4,8 +4,8 @@
     <article class="menu">
         <div class="text-center" id="info_user">
             <a href="<?php echo RUTA_APP ?>/dashboard" class="sidebar-link">
-                <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle z-depth-0" alt="avatar image" height="100">
-                <p> <small> Luis Andrés Bolaños Yapo</small> </p>
+                <img src="<?php echo $_SESSION['usuario'][0]['imagen'] ?>" class="rounded-circle z-depth-0 img-fluid" alt="avatar image" height="100">
+                <p> <small> <?php echo $_SESSION['usuario'][0]['nombre'] ?></small> </p>
             </a>
         </div>
         <ul class="sidebar-item">
@@ -49,7 +49,7 @@
 
             <!-- salir -->
             <li class="sidebar-item-list exit-sidebar mx-2">
-                <a href="" class="sidebar-link ">
+                <a href="<?php echo RUTA_APP ?>/dashboard/cerrarSession" class="sidebar-link ">
                     <i class="fas fa-sign-out-alt sidebar-icon"></i>Salir
                 </a>
             </li>

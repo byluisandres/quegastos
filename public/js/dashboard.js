@@ -1,4 +1,5 @@
 window.onload = () => {
+  var modalModificar = document.querySelector("#modificarEventos");
   /** =================================
    tipo de gasto segun el gasto
    ==================================== */
@@ -87,16 +88,96 @@ window.onload = () => {
       right: "dayGridMonth,listMonth",
     },
     locale: "es",
-    events: [
-      {
-        title: "Business Lunch",
-        start: "2021-01-19",
-      },
-    ],
+    events: "http://localhost/quegastos/calendario/ctrlObtenerEventos",
+    eventClick: function (info) {
+      var id = info.event.id;
+      var titulo = info.event.title;
+      var fecha = info.event.extendedProps[2];
+      var descripcion = info.event.extendedProps.description;
+      var color = info.event.backgroundColor;
+      //id
+      modalModificar.querySelector("#formEventosEditDelete #id").value = id;
+      //titulo
+      modalModificar.querySelector(
+        "#formEventosEditDelete #tituloEvento"
+      ).value = titulo;
+      //fecha
+      modalModificar.querySelector(
+        "#formEventosEditDelete #fecha"
+      ).value = fecha;
+      //descripcion
+      modalModificar.querySelector(
+        "#formEventosEditDelete #descripcion"
+      ).value = descripcion;
+      //color
+      modalModificar.querySelector(
+        "#formEventosEditDelete #color"
+      ).value = color;
+      $(modalModificar).modal();
+    },
   });
 
   calendar.render();
+  /** Borrar evento*/
+  var formEventosEditDelete = document.querySelector("#formEventosEditDelete");
+  formEventosEditDelete
+    .querySelector("#btnBorrar")
+    .addEventListener("click", (e) => {
+      e.preventDefault();
+      var formDataBorrar = new FormData(formEventosEditDelete);
+      var id = formDataBorrar.get("id");
+      // console.log("borrar");
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          respuesta = JSON.parse(this.responseText);
+          if (respuesta.tipo == "correcto") {
+            toastMensaje("top-end", 1200, "success", respuesta.mensaje);
+            //refrescar el calendario
+            calendar.refetchEvents();
+            $(modalModificar).modal("hide");
+          }
+          if (respuesta.tipo == "error") {
+            toastMensaje("top-end", 1200, "info", respuesta.mensaje);
+          }
+        }
+      };
+      xhttp.open(
+        "DELETE",
+        `http://localhost/quegastos/calendario/ctrlBorrarEvento/${id}`,
+        true
+      );
+      xhttp.send();
+    });
 
+  /*Modificar evento*/
+  formEventosEditDelete
+    .querySelector("#btnModificar")
+    .addEventListener("click", (e) => {
+      e.preventDefault();
+      var formDataBorrar = new FormData(formEventosEditDelete);
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          respuesta = JSON.parse(this.responseText);
+          if (respuesta.tipo == "correcto") {
+            toastMensaje("top-end", 1200, "success", respuesta.mensaje);
+            //refrescar el calendario
+            calendar.refetchEvents();
+            $(modalModificar).modal("hide");
+          }
+          if (respuesta.tipo == "error") {
+            toastMensaje("top-end", 1200, "info", respuesta.mensaje);
+          }
+        }
+      };
+      xhttp.open(
+        "POST",
+        `http://localhost/quegastos/calendario/ctrlModificarEvento/`,
+        true
+      );
+      xhttp.send(formDataBorrar);
+    });
   /*====================================
   Pintar la gráfica de barras
   ======================================*/

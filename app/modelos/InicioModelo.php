@@ -22,7 +22,7 @@ class InicioModelo
         $password = $data['password'];
         $passwordEncry = hash("sha512", $password);
         $resultado = false;
-        $ruta = "../img/fotos_perfil/avatar.png";
+        $ruta = "img/fotos_perfil/incognito.png";
         $fecha = date("Y-m-d H:i:s");
         if ($this->validaCorreo($email)) {
             $sql = "INSERT INTO usuarios VALUES(0,'$nombre','$email','$passwordEncry','$ruta','$fecha')";

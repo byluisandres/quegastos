@@ -57,7 +57,6 @@ formPdfEntreFechas.addEventListener("submit", (e) => {
 });
 selectPdfGasto.addEventListener("change", (e) => {
   var valorSelectGasto = e.target.value;
-  console.log(e.target);
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {

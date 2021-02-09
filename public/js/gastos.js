@@ -31,7 +31,6 @@ window.onload = () => {
 
   /**enviar datos del formulario con el gasto, añadir gasto */
   var formAddGasto = document.querySelector("#formAddGasto");
-
   formAddGasto.addEventListener("submit", (e) => {
     e.preventDefault();
     let formDataGastos = new FormData(formAddGasto);
@@ -125,7 +124,11 @@ window.onload = () => {
       xhttp.send(formDataGastos);
     }
   });
-
+  /*===============================================================
+  Paginación
+  =================================================================*/
+  var tableGastos = document.querySelector("#tableGastos");
+  new DataTable(tableGastos);
   /*=====================================================
     Borrar Gasto
   =======================================================*/
@@ -286,6 +289,8 @@ window.onload = () => {
     true
   );
   xhttp.send();
+
+  //bars
   function graficaBar(label, data) {
     var chartBars = document.getElementById("chartBars").getContext("2d");
     new Chart(chartBars, {
@@ -390,9 +395,4 @@ window.onload = () => {
       },
     });
   }
-  /*===============================================================
-  Paginación
-  =================================================================*/
-  var tableGastos = document.querySelector("#tableGastos");
-  new DataTable(tableGastos);
 };

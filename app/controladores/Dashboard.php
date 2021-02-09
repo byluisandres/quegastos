@@ -141,7 +141,7 @@ class Dashboard extends Controlador
         $session = new Session();
         $usuario = $session->getUsuario();
         $idUsuario = $usuario[0]['id'];
-        $resultado = $this->modelo->mdlGetGastosAnio($idUsuario,$anio);
+        $resultado = $this->modelo->mdlGetGastosAnio($idUsuario, $anio);
         if ($resultado) {
             foreach ($resultado as  $filas) {
                 $sumaTotal += $filas['cantidad'];
@@ -170,5 +170,15 @@ class Dashboard extends Controlador
             ];
             print json_encode($mensaje);
         }
+    }
+    /*Cerrar Sesión*/
+    function cerrarSession()
+    {
+        session_start();
+        if (isset($_SESSION['usuario'])) {
+            $session = new Session();
+            $session->cerrarSesion();
+        }
+        header("Location:" . RUTA_APP);
     }
 }

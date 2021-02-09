@@ -21,6 +21,7 @@ class Calendario extends Controlador
         }
     }
 
+    //Guardar los eventos
     function ctrlEnviarDatosEventosForm()
     {
         $errores = array();
@@ -44,7 +45,7 @@ class Calendario extends Controlador
             }
 
             if (count($errores) === 0) {
-                $resultado = $this->modelo->mdlAddEventos($data,$idUsuario);
+                $resultado = $this->modelo->mdlAddEventos($data, $idUsuario);
                 if ($resultado) {
                     $mensaje = [
                         "tipo" => "correcto",
@@ -73,6 +74,56 @@ class Calendario extends Controlador
             print json_encode("fail");
         } else {
             print json_encode($data);
+        }
+    }
+
+    //Funcion para borrar
+    function ctrlBorrarEvento($id)
+    {
+        $mensaje = array();
+        $resultado = $this->modelo->mdlBorrarEvento($id);
+        if ($resultado) {
+            $mensaje = [
+                "tipo" => "correcto",
+                "mensaje" => "Se ha borrado con exito"
+            ];
+            print json_encode($mensaje);
+        } else {
+            $mensaje = [
+                "tipo" => "error",
+                "mensaje" => "No se ha podido borrar"
+            ];
+            print json_encode($mensaje);
+        }
+    }
+
+    //Función para modificar
+    function ctrlModificarEvento()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === "POST") {
+            $mensaje = array();
+            $data = [
+                "id" => $_POST['id'],
+                "titulo" => $_POST['tituloEvento'],
+                "fecha" => $_POST['fecha'],
+                "descripcion" => $_POST['descripcion'],
+                "color" => $_POST['color'],
+            ];
+
+            $resultado = $this->modelo->mdlEditarEvento($data);
+            if ($resultado) {
+                $mensaje = [
+                    "tipo" => "correcto",
+                    "mensaje" => "Se ha actualizado con exito"
+                ];
+                print json_encode($mensaje);
+            } else {
+                $mensaje = [
+                    "tipo" => "error",
+                    "mensaje" => "Error al actualizar, intentalo mas tarde"
+                ];
+                print json_encode($mensaje);
+            }
         }
     }
 }

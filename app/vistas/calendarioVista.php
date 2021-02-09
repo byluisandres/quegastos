@@ -37,3 +37,5 @@
 </main>
 <!-- modal para añadir el evento -->
 <?php include_once "templates/calendario/modal_add_eventos.php" ?>
+<!-- modal para modificar/borrar el evento -->
+<?php include_once "templates/modal_modificar_eventos.php" ?>

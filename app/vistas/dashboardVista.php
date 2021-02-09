@@ -78,7 +78,7 @@
                                     <p class="lead mb-0">Total de eventos</p>
                                 </div>
                                 <div class="second-content  align-self-center mx-auto text-center p-2">
-                                    <i class="fas fa-users fa-3x"></i>
+                                    <i class="fas fa-calendar-check fa-3x"></i>
                                 </div>
                             </div>
                         </div>
@@ -124,3 +124,5 @@
 </main>
 <!-- modal de gastos -->
 <?php include_once "templates/modal-add-gastos.php" ?>
+<!-- modal modificar/borrar evento -->
+<?php include_once "templates/modal_modificar_eventos.php" ?>

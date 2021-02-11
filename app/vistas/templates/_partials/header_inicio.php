@@ -17,6 +17,7 @@
     <?php
     $url = $_SERVER["REQUEST_URI"];
     $url = explode("/", $url);
+
     ?>
 
     <?php if ($url[3] === "login") : ?>
@@ -25,13 +26,12 @@
 </head>
 
 <body>
-     <header class="fixed-top">
-        
-        <nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color">
+    <header class="fixed-top">
+
+        <nav class="mb-1 navbar navbar-expand-lg navbar-dark mdb-color darken-4">
             <div class="container">
                 <a class="navbar-brand" href="<?php echo RUTA_APP ?>">QuéGastos</a>
-                
             </div>
         </nav>
-       
+
     </header>

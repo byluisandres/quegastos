@@ -3,7 +3,7 @@
     <div class="row" style="margin-top: 10rem;">
         <div class="col col-md-12">
             <!-- Default form login -->
-            <form class="text-center shadow p-2" id="formRegistro"  method="POST">
+            <form class="text-center shadow p-5" id="formRegistro"  method="POST">
 
                 <p class="h4 mb-4">Registrarse</p>
 
@@ -16,7 +16,7 @@
                 <!-- Password -->
                 <input type="password" id="password" name="password" class="form-control mb-4" placeholder="Password">
                 <!-- Sign in button -->
-                <button class="btn btn-info btn-block my-4" type="submit">Registrarse</button>
+                <button class="btn btn-teal btn-block my-4" type="submit">Registrarse</button>
                 <!-- Register -->
                 <p>Ya tienes cuenta
                     <a href="<?php echo RUTA_APP; ?>">Inicia Sesión</a>

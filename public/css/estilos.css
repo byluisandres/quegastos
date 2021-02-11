@@ -2,10 +2,14 @@
 Estilos de la página del login
 */
 .bg {
-  background-image: url("https://www.w3schools.com/css/paris.jpg");
+  background-image: url("../img/fondo.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+.formLogin {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
 }
 /*Estilos generales*/
 body {

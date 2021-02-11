@@ -69,7 +69,6 @@ $url = explode("/", $url);
     <div class="footer-copyright text-center py-3">&copy; Copyright <?php echo date("Y") ?>
         QuéGastos. Hecho por<a href="https://byluisandresdeveloper.website/" target="__blank"> byLuisAndrés</a>
     </div>
-    <!-- Copyright -->
 
 </footer>
 <!-- Footer -->

@@ -4,8 +4,8 @@
     <article class="menu">
         <div class="text-center" id="info_user">
             <a href="<?php echo RUTA_APP ?>/dashboard" class="sidebar-link">
-                <img src="<?php echo $_SESSION['usuario'][0]['imagen'] ?>" class="rounded-circle z-depth-0 img-fluid" alt="avatar image" height="100">
-                <p> <small> <?php echo $_SESSION['usuario'][0]['nombre'] ?></small> </p>
+                <img src="<?php echo $_SESSION['usuario'][0]['imagen'] ?>" class="rounded-circle z-depth-0 " alt="avatar image" height="100">
+                <p><?php echo $_SESSION['usuario'][0]['nombre'] ?> </p>
             </a>
         </div>
         <ul class="sidebar-item">

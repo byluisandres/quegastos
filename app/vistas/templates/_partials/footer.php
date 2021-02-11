@@ -56,9 +56,15 @@ $url = explode("/", $url);
     <!-- Calendario -->
     <script src="js/calendario.js"></script>
 <?php endif; ?>
+<!-- perfil -->
+<?php if ($url[2] === "perfil") : ?>
+    <!-- mensajes -->
+    <script src="js/mensajes.js"></script>
+    <!-- Perfil -->
+    <script src="js/perfil.js"></script>
+<?php endif; ?>
 <!-- Footer -->
 <footer class="page-footer font-small">
-
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">&copy; Copyright <?php echo date("Y") ?>
         QuéGastos. Hecho por<a href="https://byluisandresdeveloper.website/" target="__blank"> byLuisAndrés</a>

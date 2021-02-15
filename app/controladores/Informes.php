@@ -12,8 +12,6 @@ class Informes extends Controlador
     public function index()
     {
         $session = new Session();
-        $usuario = $session->getUsuario();
-        $idUsuario = $usuario[0]['id'];
         $gastos = $this->modelo->mdlGetGastos();
         if ($session->getLogin()) {
             $data = ["gastos" => $gastos];

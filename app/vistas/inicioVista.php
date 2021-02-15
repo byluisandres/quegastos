@@ -8,24 +8,10 @@
                 <p class="h4 mb-4 text-center  text-white">Inicio de Sesión</p>
 
                 <!-- Email -->
-                <input type="email" id="email" name="email" class="form-control mb-4" value="<?php isset($data["datos"]["email"]) ? print $data["datos"]["email"] : "" ?>" placeholder="E-mail">
+                <input type="email" id="email" name="email" class="form-control mb-4" value="demo@demo.es" placeholder="E-mail">
 
                 <!-- Password -->
-                <input type="password" id="password" name="password" class="form-control mb-4" value="<?php isset($data["datos"]["password"]) ? print $data["datos"]["password"] : "" ?>" placeholder="Password">
-
-                <!-- <div class="d-flex justify-content-around">
-                    <div>
-                        
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="recordar" name="recordar" <?php if (isset($data["datos"]["recordar"]) == "on") print "checked"; ?>>
-                            <label class="custom-control-label" for="recordar">Recordar</label>
-                        </div>
-                    </div>
-                    <div>
-                        
-                        <a href="">¿Has olvidado tu contraseña?</a>
-                    </div>
-                </div> -->
+                <input type="password" id="password" name="password" class="form-control mb-4" value="12345" placeholder="Password">
 
                 <!-- Sign in button -->
                 <button class="btn btn-teal btn-block my-4" type="submit">Iniciar Sesión</button>
@@ -35,9 +21,7 @@
                     <a href="<?php echo RUTA_APP; ?>/ap/registro" class="text-white "> Registrarse</a>
                 </p>
                 <?php include_once "templates/_partials/errores.php" ?>
-                <p class="text-white">
-                    [ luisandres33bolanos@gmail.com - 12345 ]
-                </p>
+                
             </form>
         </div>
     </div>

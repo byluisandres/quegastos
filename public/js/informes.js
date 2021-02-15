@@ -29,7 +29,7 @@ formPdfEntreFechas.addEventListener("submit", (e) => {
         respuesta = JSON.parse(this.responseText);
         if (respuesta.tipo == "bien") {
           PDFObject.embed(
-            `http://localhost/quegastos/pdf/${respuesta.mensaje}?fechaIncial=${respuesta.fechaIncial}&&fechaFinal=${respuesta.fechaFinal}`,
+            `http://quegastos.byluisandresdeveloper.website/pdf/${respuesta.mensaje}?fechaIncial=${respuesta.fechaIncial}&&fechaFinal=${respuesta.fechaFinal}`,
             "#contenedor-informe"
           );
           textoVistaPrevia.innerHTML = `Gastos desde ${respuesta.fechaIncial} a ${respuesta.fechaFinal}`;
@@ -49,7 +49,7 @@ formPdfEntreFechas.addEventListener("submit", (e) => {
     };
     xhttp.open(
       "POST",
-      `http://localhost/quegastos/pdf/ctrlGetFechasForm`,
+      `http://quegastos.byluisandresdeveloper.website/pdf/ctrlGetFechasForm`,
       true
     );
     xhttp.send(formDataPdfEntreFechas);
@@ -95,7 +95,7 @@ selectPdfGasto.addEventListener("change", (e) => {
       }
       if (respuesta.tipo === "bien") {
         PDFObject.embed(
-          `http://localhost/quegastos/pdf/${respuesta.mensaje}?id=${respuesta.id}`,
+          `http://quegastos.byluisandresdeveloper.website/pdf/${respuesta.mensaje}?id=${respuesta.id}`,
           "#contenedor-informe"
         );
         textoVistaPrevia.innerHTML = `${gasto}`;
@@ -110,7 +110,7 @@ selectPdfGasto.addEventListener("change", (e) => {
   };
   xhttp.open(
     "POST",
-    `http://localhost/quegastos/pdf/ctrlGetGasto/${valorSelectGasto}`,
+    `http://quegastos.byluisandresdeveloper.website/pdf/ctrlGetGasto/${valorSelectGasto}`,
     true
   );
   xhttp.send();
@@ -125,7 +125,7 @@ selectPdfAnio.addEventListener("change", (e) => {
 
       if (respuesta.tipo === "bien") {
         PDFObject.embed(
-          `http://localhost/quegastos/pdf/${respuesta.mensaje}?anio=${respuesta.anio}`,
+          `http://quegastos.byluisandresdeveloper.website/pdf/${respuesta.mensaje}?anio=${respuesta.anio}`,
           "#contenedor-informe"
         );
         textoVistaPrevia.innerHTML = `Gasto del año: ${respuesta.anio}`;
@@ -140,7 +140,7 @@ selectPdfAnio.addEventListener("change", (e) => {
   };
   xhttp.open(
     "POST",
-    `http://localhost/quegastos/pdf/ctrlGetAnioForm/${valorSelectAnio}`,
+    `http://quegastos.byluisandresdeveloper.website/pdf/ctrlGetAnioForm/${valorSelectAnio}`,
     true
   );
   xhttp.send();

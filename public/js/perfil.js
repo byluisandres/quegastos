@@ -47,7 +47,7 @@ window.onload = () => {
       };
       xhttp.open(
         "POST",
-        "http://localhost/quegastos/perfil/ctrlCambiarFoto",
+        "http://quegastos.byluisandresdeveloper.website/perfil/ctrlCambiarFoto",
         true
       );
       xhttp.send(formDataImage);
@@ -73,7 +73,7 @@ window.onload = () => {
     };
     xhttp.open(
       "POST",
-      "http://localhost/quegastos/perfil/ctrlActualizarDatos",
+      "http://quegastos.byluisandresdeveloper.website/perfil/ctrlActualizarDatos",
       true
     );
     xhttp.send(formDataInfoUsuario);

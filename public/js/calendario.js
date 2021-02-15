@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     timeZone: "UTC",
     dayMaxEvents: true,
     locale: "es",
-    events: "http://localhost/quegastos/calendario/ctrlObtenerEventos",
+    events: "http://quegastos.byluisandresdeveloper.website/calendario/ctrlObtenerEventos",
     eventClick: function (info) {
       var id = info.event.id;
       var titulo = info.event.title;
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     xhttp.open(
       "POST",
-      "http://localhost/quegastos/calendario/ctrlEnviarDatosEventosForm",
+      "http://quegastos.byluisandresdeveloper.website/calendario/ctrlEnviarDatosEventosForm",
       true
     );
     xhttp.send(formData);
@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
       };
       xhttp.open(
         "DELETE",
-        `http://localhost/quegastos/calendario/ctrlBorrarEvento/${id}`,
+        `http://quegastos.byluisandresdeveloper.website/calendario/ctrlBorrarEvento/${id}`,
         true
       );
       xhttp.send();
@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
       };
       xhttp.open(
         "POST",
-        `http://localhost/quegastos/calendario/ctrlModificarEvento/`,
+        `http://quegastos.byluisandresdeveloper.website/calendario/ctrlModificarEvento/`,
         true
       );
       xhttp.send(formDataBorrar);

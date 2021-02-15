@@ -1,6 +1,6 @@
 <?php
 //cargar las clases
-define("RUTA_APP","/quegastos");
+define("RUTA_APP","http://quegastos.byluisandresdeveloper.website/");
 require_once "libs/MYSQLdb.php";
 require_once "libs/Controlador.php";
 require_once "libs/Control.php";

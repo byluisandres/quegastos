@@ -25,7 +25,7 @@ window.onload = () => {
           if (respuesta.tipo === "correcto") {
             toastMensaje("center", 1200, "success", respuesta.mensaje);
             setTimeout(() => {
-              window.location.href = "http://localhost/quegastos/";
+              window.location.href = "http://quegastos.byluisandresdeveloper.website/";
             }, 1200);
           } else if (respuesta.tipo === "error") {
             toastMensaje("center", 1200, "info", respuesta.mensaje);
@@ -34,7 +34,7 @@ window.onload = () => {
           }
         }
       };
-      xhttp.open("POST", "http://localhost/quegastos/ap/ctrlRegistrarse", true);
+      xhttp.open("POST", "http://quegastos.byluisandresdeveloper.website/ap/ctrlRegistrarse", true);
       xhttp.send(formDataRegistro);
     }
   });

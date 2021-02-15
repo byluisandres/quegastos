@@ -23,7 +23,7 @@ window.onload = () => {
     };
     xhttp.open(
       "POST",
-      `http://localhost/quegastos/gastos/ctrlGetTipoGasto/${valorSelectGasto}`,
+      `http://quegastos.byluisandresdeveloper.website/gastos/ctrlGetTipoGasto/${valorSelectGasto}`,
       true
     );
     xhttp.send();
@@ -118,7 +118,7 @@ window.onload = () => {
       };
       xhttp.open(
         "POST",
-        "http://localhost/quegastos/gastos/ctrlDatosFormGasto",
+        "http://quegastos.byluisandresdeveloper.website/gastos/ctrlDatosFormGasto",
         true
       );
       xhttp.send(formDataGastos);
@@ -169,7 +169,7 @@ window.onload = () => {
           };
           xhttp.open(
             "POST",
-            `http://localhost/quegastos/gastos/ctrlBorrarGasto/${id}`,
+            `http://quegastos.byluisandresdeveloper.website/gastos/ctrlBorrarGasto/${id}`,
             true
           );
           xhttp.send();
@@ -215,7 +215,7 @@ window.onload = () => {
         };
         xhttp.open(
           "POST",
-          "http://localhost/quegastos/gastos/ctrlEditarGasto",
+          "http://quegastos.byluisandresdeveloper.website/gastos/ctrlEditarGasto",
           true
         );
         xhttp.send(formDataEditar);
@@ -236,7 +236,7 @@ window.onload = () => {
     };
     xhttp.open(
       "POST",
-      `http://localhost/quegastos/gastos/ctrlGetTipoGasto/${valorSelectGasto}`,
+      `http://quegastos.byluisandresdeveloper.website/gastos/ctrlGetTipoGasto/${valorSelectGasto}`,
       true
     );
     xhttp.send();
@@ -285,7 +285,7 @@ window.onload = () => {
   };
   xhttp.open(
     "GET",
-    "http://localhost/quegastos/gastos/ctrlObtenerGastoUserBD/",
+    "http://quegastos.byluisandresdeveloper.website/gastos/ctrlObtenerGastoUserBD/",
     true
   );
   xhttp.send();

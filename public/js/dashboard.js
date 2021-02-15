@@ -21,7 +21,7 @@ window.onload = () => {
     };
     xhttp.open(
       "POST",
-      `http://localhost/quegastos/dashboard/ctrlGetTipoGasto/${valorSelectGasto}`,
+      `http://quegastos.byluisandresdeveloper.website/dashboard/ctrlGetTipoGasto/${valorSelectGasto}`,
       true
     );
     xhttp.send();
@@ -70,7 +70,7 @@ window.onload = () => {
       };
       xhttp.open(
         "POST",
-        "http://localhost/quegastos/dashboard/ctrlDatosFormGasto",
+        "http://quegastos.byluisandresdeveloper.website/dashboard/ctrlDatosFormGasto",
         true
       );
       xhttp.send(formDataGastos);
@@ -88,7 +88,7 @@ window.onload = () => {
       right: "dayGridMonth,listMonth",
     },
     locale: "es",
-    events: "http://localhost/quegastos/calendario/ctrlObtenerEventos",
+    events: "http://quegastos.byluisandresdeveloper.website/calendario/ctrlObtenerEventos",
     eventClick: function (info) {
       var id = info.event.id;
       var titulo = info.event.title;
@@ -144,7 +144,7 @@ window.onload = () => {
       };
       xhttp.open(
         "DELETE",
-        `http://localhost/quegastos/calendario/ctrlBorrarEvento/${id}`,
+        `http://quegastos.byluisandresdeveloper.website/calendario/ctrlBorrarEvento/${id}`,
         true
       );
       xhttp.send();
@@ -173,7 +173,7 @@ window.onload = () => {
       };
       xhttp.open(
         "POST",
-        `http://localhost/quegastos/calendario/ctrlModificarEvento/`,
+        `http://quegastos.byluisandresdeveloper.website/calendario/ctrlModificarEvento/`,
         true
       );
       xhttp.send(formDataBorrar);
@@ -230,7 +230,7 @@ window.onload = () => {
   };
   xhttp.open(
     "GET",
-    "http://localhost/quegastos/dashboard/ctrlObtenerGastoUser",
+    "http://quegastos.byluisandresdeveloper.website/dashboard/ctrlObtenerGastoUser",
     true
   );
   xhttp.send();
@@ -288,7 +288,7 @@ window.onload = () => {
     };
     xhttp.open(
       "POST",
-      `http://localhost/quegastos/dashboard/ctrlGetGastosAnio/${anio}`,
+      `http://quegastos.byluisandresdeveloper.website/dashboard/ctrlGetGastosAnio/${anio}`,
       true
     );
     xhttp.send();
